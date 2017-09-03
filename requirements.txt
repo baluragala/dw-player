@@ -1,0 +1,60 @@
+requirements
+------------
+Python 2.7.13 (default, Jan 19 2017, 14:48:08) 
+[GCC 6.3.0 20170124] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+python 2.7
+
+pip install requests json websocket-client omxplayer-wrapper
+
+
+python-dbus
+-----------
+sudo apt-get install python-dbus
+
+sqllite (3.16.2-5)
+-------
+sudo apt-get install sqlite3
+
+schema
+-----
+CREATE TABLE player(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    registrationID TEXT,
+    deviceID TEXT,
+    clientID TEXT
+    )
+CREATE TABLE campaign(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    campaignID TEXT,
+    clientID TEXT
+    )
+CREATE TABLE campaign_channel(
+    campaignID TEXT,
+    channelID TEXT
+    )
+CREATE TABLE assets(
+    assetID TEXT,
+    animation TEXT,
+    duration INTEGER,
+    originalName TEXT,
+    type TEXT,
+    downloadUrl TEXT,
+    local_url TEXT,
+    vimeoId INTEGER
+    )
+
+CREATE TABLE schedule(
+    scheduleID TEXT,
+    campaignID TEXT,
+    startDate DATE,
+    startTime TIME,
+    endDate DATE,
+    endTime TIME
+    )
+CREATE TABLE log(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    event TEXT
+    logDateTime DATE DEFAULT(datetime('now','localtime')),
+    rawResponse TEXT
+    )
